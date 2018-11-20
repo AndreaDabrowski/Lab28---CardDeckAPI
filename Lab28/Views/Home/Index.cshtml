@@ -1,0 +1,33 @@
+﻿<h1>LETS DO CARD STUFF</h1><br />
+
+@if (ViewBag.CardsInHand != null)
+{
+    <div>
+        @foreach (var card in ViewBag.CardsInHand)
+        {
+            <section>
+                <img src="@card["image"]" />
+                <p>@card["value"] OF @card["suit"]</p>
+            </section>
+        }
+    </div>
+}
+
+
+<form action="/Home/CreateDeck" method="post">
+    <input type="submit" value="Make a new deck" />
+</form> <br />
+@if (ViewBag.Deck != null)
+{
+    <form action="/Home/DrawCards" method="post">
+        <input type="Submit" value="Draw Cards" />
+        <input type="hidden" name="deck_id" value="@ViewBag.Deck" />
+    </form>
+}
+@*else
+{
+    <form action="/Home/DrawCards" method="post">
+        <input type="Submit" value="Draw Cards" />
+        <input type="hidden" name="deck_id" value="@ViewBag.Deck" />
+    </form>
+}playing around with extended challenge*@
